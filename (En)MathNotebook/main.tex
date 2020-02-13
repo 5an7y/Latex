@@ -1,0 +1,136 @@
+%%Template made by José Santiago Vales Mena. GitHub: 5an7y
+%Page configuration{
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry, hyperref, listings, ragged2e, amsmath, enumerate, minted, graphicx, xcolor, setspace, fancyhdr, amssymb, anyfontsize}
+
+\geometry{
+ letterpaper,
+ left = 20mm,
+ headheight=80mm
+}
+
+%}
+
+
+\newcommand{\Title}{Here goes the title}
+\newcommand{\Person}{Here goes your name}
+\newcommand{\Place}{Institution}
+\newif\ifimage
+\imagefalse
+\newcommand{\Image}{...} %Here goes the direction of and image ej. images/butterfly.png
+% If you want you want to put an image, erase the "%" of the next line
+%\imagetrue
+
+%Enviroments{
+    
+    \newcounter{problem}[subsection]
+    \newenvironment{problem}[1][]
+        {\refstepcounter{problem}\par\medskip\noindent
+        \large{\textbf{Problem~\theproblem. #1}} \rmfamily \begin{itshape}\normalsize}
+        {\end{itshape} \medskip}
+
+    \newcounter{answer}[section]
+    \newenvironment{answer}[1][]
+        {\refstepcounter{answer}\par\medskip\noindent
+        \large \textbf{answer~} \rmfamily \normalsize}
+        {\medskip}
+
+    \newcounter{subproblem}[problem]
+    \newenvironment{subproblem}[1][]
+        {\refstepcounter{subproblem}\par\medskip\noindent
+        \thesubproblem #1 \normalsize}
+        {\medskip}
+
+    \renewcommand\thesubproblem{(\theproblem.\roman{subproblem})}
+
+    \newcounter{subanswer}[answer]
+    \newenvironment{subanswer}[1][]
+        {\refstepcounter{subanswer}\par\medskip\noindent
+        \thesubanswer #1 \normalsize}
+        {\medskip}
+    
+    \renewcommand\thesubanswer{(\theanswer.\roman{subanswer})}
+
+    \newcounter{theorem}[section]
+    \newenvironment{theorem}[1][]
+        {\refstepcounter{theorem}\par\medskip\noindent
+        \Large \textbf{Theorem~ \thetheorem. #1} \rmfamily \large}
+        {\medskip \normalsize}
+
+    \newcounter{properties}[section]
+    \newenvironment{properties}[1][]
+        {\refstepcounter{properties}\par\medskip\noindent
+        \large{\textbf{P~\theproperties. #1}} \rmfamily}
+        {\medskip}
+
+    \newenvironment{proposition}[1][]
+        {\par\medskip\noindent
+        \large{\textbf{proposition~}} \rmfamily \begin{itshape}\normalsize}
+        {\end{itshape}}
+
+    \newenvironment{demonstration}[1][]
+        {\par\medskip\noindent
+        \normalsize \textbf{Demonstration~} \rmfamily \small}
+        {\begin{flushright}$\blacksquare$ \end{flushright}\normalsize{}}
+    
+    \newenvironment{definition}[1][]
+        {\par\medskip\noindent
+        \large \textbf{Definition~} \rmfamily \normalsize}
+        {\medskip\normalsize{}}
+
+    \newenvironment{corollary}[1][]
+        {\par\medskip\noindent
+        \large \textbf{Corollary~} \rmfamily \normalsize}
+        {\medskip\normalsize{}}
+
+%}
+
+%Frequently use commands{
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\Pn}{\mathbb{P}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Z}{\mathbb{Z}}
+%}
+
+\begin{document}
+%Cover{
+    \pagenumbering{gobble}
+    \onehalfspacing
+    \centering
+    \fontsize{40}{48}\selectfont{ \textbf{{\Title}}}
+    \vspace{1cm}
+    
+    \huge{\Person}
+    
+    \ifimage
+        \includegraphics[width=\linewidth]{\Image}
+    \else
+    \fi
+    
+    \vfill
+    
+    \LARGE{\today}
+    
+    \vspace{15mm}
+    
+    \Large{\Place}
+    \newpage
+%}
+
+%Content configuration {
+    \normalsize
+    \pagestyle{fancy}
+    \rhead{\Title}
+    \lhead{\Person}
+    \pagenumbering{arabic}
+    \justify
+%}
+
+%% Here you start writing, in this template we write in other files to keep order.
+
+\input{information/limits/definition}
+\input{information/problems/limits}
+ 
+\end{document}

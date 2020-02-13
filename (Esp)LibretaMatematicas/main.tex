@@ -1,0 +1,137 @@
+%%Template creada por José Santiago Vales Mena. GitHub: 5an7y
+%configuración de la pagina{
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry, hyperref, listings, ragged2e, amsmath, enumerate, minted, graphicx, xcolor, setspace, fancyhdr, amssymb, anyfontsize}
+
+\geometry{
+ letterpaper,
+ left = 20mm,
+ headheight=80mm
+}
+
+%}
+
+
+\newcommand{\Titulo}{Aquí va tu título}
+\newcommand{\Persona}{Aquí va tu nombre}
+\newcommand{\Lugar}{Harvard}
+\newif\ifimage
+\imagefalse
+\newcommand{\Imagen}{...} %Aquí va la dirección de la imagen ej. images/mariposa.png
+% Si quieres una imagen en la portada, quita el "%" de la siguiente linea
+%\imagetrue
+
+%Ambientes{
+    
+    \newcounter{problema}[subsection]
+    \newenvironment{problema}[1][]
+        {\refstepcounter{problema}\par\medskip\noindent
+        \large{\textbf{Problema~\theproblema. #1}} \rmfamily \begin{itshape}\normalsize}
+        {\end{itshape} \medskip}
+
+    \newcounter{respuesta}[section]
+    \newenvironment{respuesta}[1][]
+        {\refstepcounter{respuesta}\par\medskip\noindent
+        \large \textbf{Respuesta~} \rmfamily \normalsize}
+        {\medskip}
+
+    \newcounter{subproblema}[problema]
+    \newenvironment{subproblema}[1][]
+        {\refstepcounter{subproblema}\par\medskip\noindent
+        \thesubproblema #1 \normalsize}
+        {\medskip}
+
+    \renewcommand\thesubproblema{(\theproblema.\roman{subproblema})}
+
+    \newcounter{subrespuesta}[respuesta]
+    \newenvironment{subrespuesta}[1][]
+        {\refstepcounter{subrespuesta}\par\medskip\noindent
+        \thesubrespuesta #1 \normalsize}
+        {\medskip}
+    
+    \renewcommand\thesubrespuesta{(\therespuesta.\roman{subrespuesta})}
+
+    \newcounter{teorema}[section]
+    \newenvironment{teorema}[1][]
+        {\refstepcounter{teorema}\par\medskip\noindent
+        \Large \textbf{Teorema~ \theteorema. #1} \rmfamily \large}
+        {\medskip \normalsize}
+
+    \newcounter{propiedades}[section]
+    \newenvironment{propiedades}[1][]
+        {\refstepcounter{propiedades}\par\medskip\noindent
+        \large{\textbf{P~\thepropiedades. #1}} \rmfamily}
+        {\medskip}
+
+    \newenvironment{proposicion}[1][]
+        {\par\medskip\noindent
+        \large{\textbf{Proposición~}} \rmfamily \begin{itshape}\normalsize}
+        {\end{itshape}}
+
+    \newenvironment{demostracion}[1][]
+        {\par\medskip\noindent
+        \normalsize \textbf{Demostración~} \rmfamily \small}
+        {\begin{flushright}$\blacksquare$ \end{flushright}\normalsize{}}
+    
+    \newenvironment{definicion}[1][]
+        {\par\medskip\noindent
+        \large \textbf{Definición~} \rmfamily \normalsize}
+        {\medskip\normalsize{}}
+
+    \newenvironment{corolario}[1][]
+        {\par\medskip\noindent
+        \large \textbf{Corolario~} \rmfamily \normalsize}
+        {\medskip\normalsize{}}
+
+%}
+
+%Comandos para cosas usadas frecuentemente{
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\Pn}{\mathbb{P}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Z}{\mathbb{Z}}
+%}
+
+\begin{document}
+%Portada{
+    \pagenumbering{gobble}
+    \onehalfspacing
+    \centering
+    \fontsize{40}{48}\selectfont{ \textbf{{\Titulo}}}
+    \vspace{1cm}
+    
+    \huge{\Persona}
+    
+    \ifimage
+        \includegraphics[width=\linewidth]{\Imagen}
+    \else
+    \fi
+    
+    \vfill
+    
+    \LARGE{\today}
+    
+    \vspace{15mm}
+    
+    \Large{\Lugar}
+    \newpage
+%}
+
+%Configuración del contenido {
+    \normalsize
+    \pagestyle{fancy}
+    \rhead{\Titulo}
+    \lhead{\Persona}
+    \pagenumbering{arabic}
+    \justify
+%}
+
+%% Aquí empiezas a escribir (en el template se escriben en otros archivos para un mayor orden, pero como gustes).
+
+\input{Informacion/Limite/Definicion}
+\input{Informacion/Problemas/Limites}
+
+ 
+\end{document}
